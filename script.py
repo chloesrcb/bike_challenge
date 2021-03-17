@@ -22,8 +22,12 @@ df_bike = bp.Load_data(url_bike, target_bike).save_as_df(target_bike)
 # Weather data in Montpellier in 2020 
 df_weather20 = pd.read_csv("./bikeprediction/data/data_weather20.csv")
 
-# Weather data in Montpellier in 2021 (only january)
+# Weather data in Montpellier in 2021 (only january and february)
 df_weather21 = pd.read_csv("./bikeprediction/data/data_weather21.csv")
+
+# Concatenate the two df in one df_weather 
+df_weather = pd.concat([df_weather20, df_weather21], ignore_index=True)
+
 
 
 #%%
@@ -35,14 +39,9 @@ df_bike.columns = ['Date', 'Heure', 'Grand total', 'Total jour', 'Remarque']
 #%%
 # dataframe descriptions
 # print(df_bike.describe())
-# print(df_weather20.describe())
-# print(df_weather21.describe())
+# print(df_weather.describe())
 
-
-#%%
-print(df_weather20["OPINION"].unique())
-
-# weather dataframes modification
+# weather dataframe modification
 
 #%%
 
@@ -60,30 +59,52 @@ def col_str_to_int(df, col, elt_col_sort):
         i = i + 1
     for j in range(len(df[col])):
         df[col][j] = dict_temp.get(df[col][j]) # copy pb here
+
 #%%
+print(df_weather["OPINION"].unique())
+
 opinion_str = ["météo très défavorable", "météo défavorable", "météo correcte",
             "météo favorable", "météo idéale"]
 
-opinion_to_int(df_weather20, "OPINION", opinion_str)
-opinion_to_int(df_weather21, "OPINION", opinion_str)
+col_str_to_int(df_weather, "OPINION", opinion_str)
 
 # verification 
-print(df_weather20["OPINION"].unique())
-print(df_weather21["OPINION"].unique())
+print(df_weather["OPINION"].unique())
+
 
 #%%
-df_bike["Date"] = pd.to_datetime(df_bike["Date"])
+df_bike["Date"] = pd.to_datetime(df_bike["Date"],format="%d/%m/%Y")
 df_bike["Heure"] = pd.to_datetime(df_bike["Heure"]).dt.time
-df_weather20["DATE"] = pd.to_datetime(df_weather20["DATE"])
-df_weather21["DATE"] = pd.to_datetime(df_weather21["DATE"])
-df_weather20["OPINION"] = pd.to_numeric(df_weather20["OPINION"])
-df_weather21["OPINION"] = pd.to_numeric(df_weather21["OPINION"])
+
+df_weather["DATE"] = pd.to_datetime(df_weather["DATE"])
+df_weather["OPINION"] = pd.to_numeric(df_weather["OPINION"])
 
 # %%
 # df_bike.dtypes
-df_weather21.dtypes
+df_weather.dtypes
 
 
 # %%
 
 # %%
+
+df = df_bike.assign(Meteo = -1)
+
+
+#%%
+
+# to put in preprocess 
+
+for j in range(df_weather.shape[0]):
+    date = df_weather["DATE"][j]
+    opinion = df_weather["OPINION"][j]
+    df.iloc[df.Date == date, 5] = opinion
+
+# %%
+target = df.pop('Total jour')
+# %%
+dataset = tf.data.Dataset.from_tensor_slices((df.values, target.values))
+for feat, targ in dataset.take(5):
+  print ('Features: {}, Target: {}'.format(feat, targ))
+# %%
+tf.constant(df['thal'])
