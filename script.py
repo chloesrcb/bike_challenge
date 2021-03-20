@@ -4,7 +4,13 @@ import pandas as pd
 import numpy as np
 import string
 import os
+
 import tensorflow as tf # for neural network
+
+from tensorflow import keras
+from tensorflow.keras import layers
+from tensorflow.keras.layers.experimental import preprocessing
+
 import matplotlib.pyplot as plt
 
 
@@ -88,7 +94,7 @@ df_weather.dtypes
 
 # %%
 
-df = df_bike.assign(Meteo = -1)
+df = df_bike.assign(Meteo = None)
 
 
 #%%
@@ -100,11 +106,75 @@ for j in range(df_weather.shape[0]):
     opinion = df_weather["OPINION"][j]
     df.iloc[df.Date == date, 5] = opinion
 
+
+
+## Tensorflow part
 # %%
-target = df.pop('Total jour')
+
+df.drop(columns=['Remarque'], inplace=True)
+
 # %%
-dataset = tf.data.Dataset.from_tensor_slices((df.values, target.values))
-for feat, targ in dataset.take(5):
-  print ('Features: {}, Target: {}'.format(feat, targ))
+df.dropna(inplace=True)
+
 # %%
-tf.constant(df['thal'])
+df["Date"] = pd.to_datetime(df["Date"].astype(str)+' '+df["Heure"].astype(str),format="%Y-%m-%d %H:%M:%S")
+
+df.drop(columns=['Heure'], inplace=True)
+
+df["joursemaine"] = df.Date.dt.dayofweek
+df["jour"] = df.Date.dt.day
+df["annee"] = df.Date.dt.year
+df["heure"] = df.Date.dt.hour
+df["minute"] = df.Date.dt.minute
+
+df.drop(columns=['Date'], inplace=True)
+df.drop(columns=['Grand total'], inplace=True)
+# %%
+
+x_train = df.copy()
+x_train = x_train.assign(previous_record=0)
+x_train = x_train.assign(hour_previous_record=0)
+x_train = x_train.assign(minute_previous_record=0)
+for i in range(1,x_train.shape[0]):
+    if(x_train.iloc[i,3]==x_train.iloc[i-1,3] and x_train.iloc[i,4]==x_train.iloc[i-1,4]):
+        x_train.iloc[i,7]=x_train.iloc[i-1,0]
+        x_train.iloc[i,8]=x_train.iloc[i-1,5]
+        x_train.iloc[i,9]=x_train.iloc[i-1,6]
+
+
+x_train.drop(columns=['Total jour'], inplace=True)
+x_train["Meteo"] = x_train["Meteo"].astype(int)
+
+y_train = df["Total jour"].copy()
+#%%
+normalizer = preprocessing.Normalization()
+normalizer.adapt(np.array(x_train))
+print(normalizer.mean.numpy())
+
+print('Normalized:', normalizer(x_train).numpy())
+# %%
+model = keras.Sequential([
+      normalizer,
+      layers.Dense(9, activation='relu'),
+      layers.Dense(512, activation='relu'),
+      layers.Dense(512, activation='relu'),
+      layers.Dense(512, activation='relu'),
+      layers.Dense(1)
+  ])
+
+#%%
+model.compile(
+    optimizer=tf.optimizers.Adam(learning_rate=0.1),
+    loss='mean_absolute_error')
+
+# %%
+model.fit(
+    x_train, y_train,
+    epochs=40,
+    # Calculate validation results on 20% of the training data
+    validation_split = 0.2)
+# %%
+test=x_train.iloc[0]
+print(test.shape)
+model.predict(x_train)
+# %%
