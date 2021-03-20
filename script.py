@@ -98,7 +98,7 @@ for i in range(1, x_train.shape[0]):
 
 #%%
 
-x_train["Meteo"] = x_train["Meteo"].astype(int)
+x_train["meteo"] = x_train["meteo"].astype(int)
 
 train_dataset = x_train.sample(frac=0.8, random_state=0).copy()
 train_label = train_dataset.pop("Total jour")
@@ -147,7 +147,7 @@ def plot_prediction(x, y, reference):
 y_pred = model.predict(test_dataset)
 x = tf.linspace(0, test_label.shape[0]-1, test_label.shape[0])
 
-plot_prediction(x,y_pred,test_label)
+plot_prediction(x,y_pred, test_label)
 # %%
 
 # %%
