@@ -3,7 +3,9 @@ from download import download
 
 class Load_data:
   def __init__(self, url, target_name):
+    print("debut")
     download(url, target_name, replace=True)
+    print("fin")
   
   @staticmethod
   def save_as_df(path_target):
