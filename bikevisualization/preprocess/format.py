@@ -16,6 +16,7 @@ import pandas as pd
 
 # for all df in df_list, add a column date and a column weekday
 # and put date in index
+
 def format_dfs(df_list):
     for i in range(10) :
         df_list[i] = df_list[i].assign(date=0)
