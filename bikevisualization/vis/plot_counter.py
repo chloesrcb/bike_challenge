@@ -1,0 +1,59 @@
+
+import calendar
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def plot_date(df):
+    sns.set_theme(style="darkgrid")
+    sns.relplot(x="date", y="intensity", kind="line", ci="sd", data=df)
+    plt.xlabel('Date')
+    plt.ylabel('Nombre de vélos (Intensité)')
+    plt.xticks(rotation=45)
+    plt.title("Nombre de vélos en fonction de la date")
+    plt.show()
+
+def plot_week(df):
+    counter_week = df.groupby("weekday")["intensity"]
+    days = ['Lundi', 'Mardi', 'Mercredi',
+        'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
+    counter_week.plot()
+    plt.legend(labels=days, loc='lower left', bbox_to_anchor=(1, 0.1))
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_month(df):
+    months = ['Janvier', 'Fevrier', 'Mars', 'Avril',
+              'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre',
+              'Octobre', 'Novembre', 'Decembre']
+    df['month'] = df.index.month
+    df['month'] = df['month'].apply(lambda x: calendar.month_abbr[x])
+    counter_month = df.groupby("month")["intensity"]
+    counter_month.plot()
+    plt.legend(labels=months, loc='lower left', bbox_to_anchor=(1, 0.1))
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+
+def histplot_counter(df):
+    sns.histplot(data=df, y="intensity", hue="month", multiple="stack")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_counter(dict_counters, counter, date=False, week=False, month=False, histogram=False):
+    if date :
+        plot_date(dict_counters[counter])
+    if week :
+        plot_week(dict_counters[counter])
+    if month :
+        plot_month(dict_counters[counter])
+    if histogram :
+        histplot_counter(dict_counters[counter])
+
+
+

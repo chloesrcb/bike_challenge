@@ -196,7 +196,7 @@ def plot_prediction(x, y, reference):
     plt.scatter(x, reference, label='Data')
     plt.plot(x, y, color='k', label='Predictions')
     plt.xlabel('test')
-    plt.ylabel('nb velo')
+    plt.ylabel('number of bikes')
     plt.legend()
 
 
