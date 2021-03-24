@@ -20,7 +20,7 @@ def format_to_int(df, col, elt_col_sort):
 # by removing useless column and NaN values
 # by adding cropped date with day, mont, year, hour, minute
 def format_bike(df_bike):
-    df_bike["Date"] = pd.to_datetime(df_bike["Date"].astype(str)+' '+df_bike["Heure"].astype(str),format="%Y-%m-%d %H:%M:%S")
+    df_bike["Date"] = pd.to_datetime(df_bike["Date"].astype(str) + ' ' + df_bike["Heure"].astype(str),format="%Y-%m-%d %H:%M:%S")
     df_bike.drop(columns=['Heure'], inplace=True)
     # get value in new columns 
     df_bike["joursemaine"] = df_bike.Date.dt.dayofweek

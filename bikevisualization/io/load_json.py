@@ -6,7 +6,6 @@ def format_json(web_content):
   str_content = str(web_content)
   str_content = str_content.replace("\\n","")
   str_content = "["+str_content[2:-1]+"]"
-  print(str_content[0:15])
   str_content = str_content.replace("} {","},{")
   str_content = str_content.replace("}  {","},{")
   str_content = str_content.replace("}   {","},{")
@@ -32,8 +31,6 @@ class Load_json:
     df_list = []
     for counter in list_name :
       path_target = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "data", counter + ".json")
-      print(counter)
       df = pd.read_json(path_target)
       df_list.append(df)
-
     return df_list
