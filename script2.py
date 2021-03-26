@@ -35,7 +35,6 @@ ax
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
-%matplotlib inline
 
 #%%
 data = "https://data.montpellier3m.fr/sites/default/files/ressources/MMM_EcoCompt_X2H20042633.json"
