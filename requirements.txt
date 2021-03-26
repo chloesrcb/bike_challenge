@@ -1,0 +1,6 @@
+numpy
+matplotlib>=3.3.2
+scipy
+pandas
+ipywidgets>=7.5.1
+ipympl==0.5.8
