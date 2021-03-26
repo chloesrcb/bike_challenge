@@ -8,9 +8,9 @@
 # col_same : column from df in common with df 
 # col_val : column where are the values wanted
 
-def connect_df(df, df_val, col, col_same, col_val):
+def connect_df(df, df_val, col, col_same, col_val, num_col):
     for j in range(df_val.shape[0]):
         temp = df_val[col_same][j]
         value = df_val[col_val][j]
-        df.iloc[df[col] == temp, 4] = value
+        df.iloc[df[col] == temp, num_col] = value
     return df
