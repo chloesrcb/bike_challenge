@@ -58,6 +58,8 @@ df_bike = df_bike_raw.copy()
 df_bike = df_bike.assign(meteo = None)
 df_bike = df_bike.assign(vent = None)
 
+# df_bike = df_bike.assign(pluie = None)
+
 #%%
 
 # put weather opinion value in df_bike according to the date
@@ -65,6 +67,11 @@ df_bike = bp.connect_df(df_bike, df_weather, "Date", "DATE", "OPINION", 4)
 
 #%%
 df_bike = bp.connect_df(df_bike, df_weather, "Date", "DATE", "WINDSPEED_MAX_KMH", 5)
+
+#%%
+
+# df_bike = bp.connect_df(df_bike, df_weather, "Date", "DATE", "PRECIP_TOTAL_DAY_MM", 6)
+
 
 #%%
 # format df_bike by changing date format in datetime, 
@@ -75,6 +82,12 @@ df_bike = bp.format_bike(df_bike)
 #%%
 df_bike = bp.add_confinement(df_bike)
 df_bike = bp.add_couvre_feu(df_bike)
+
+#%%
+# adding holiday 
+#df_bike = bp.add_holiday(df_bike)
+# I remove it because it doesn't improve prediction,
+# it makes it worse
 
 #%%
 df_bike.drop(columns=['Date'], inplace=True)

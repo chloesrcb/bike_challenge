@@ -77,3 +77,49 @@ def add_couvre_feu(df_bike):
             if (hour >= 19 or hour < 6) and (hour_previous >= 19 or hour_previous < 6):
                 df_bike.iloc[i,column_index.get_loc("couvre_feu")] = 1
     return df_bike
+
+
+def add_holiday(df_bike):
+    # scholar holidays in Montpellier :
+    # 04/04/20 to 20/04/20
+    # 04/07/20 to 01/09/20
+    # 17/10/20 to 02/11/20
+    # 19/12/20 to 04/01/21
+    # 13/02/21 to 01/03/21
+
+    # statutory holiday 2020 : 
+    #       12/04, 13/04, 01/05, 08/05,
+    #       21/05, 31/05, 01/06, 14/07
+    #       15/08, 01/11, 25/12
+    # statutory holiday 2021: 01/01
+    
+    stat_holiday = ["2020-04-12", "2020-04-13", "2020-05-01", "2020-05-08", 
+                    "2020-05-21", "2020-05-31", "2020-06-01", "2020-07-14", 
+                    "2020-08-15", "2020-11-01", "2020-12-25", "2021-01-01"]
+    stat_holiday = pd.to_datetime(stat_holiday)
+
+    df_bike = df_bike.assign(vacances=0)
+    df_bike = df_bike.assign(feries=0) # statutory holiday
+
+    column_index = Index(df_bike.columns)
+    for i in range(df_bike.shape[0]):
+        date = df_bike.iloc[i,column_index.get_loc("Date")]
+        if date >= pd.to_datetime("2020-04-04") and date <= pd.to_datetime("2020-04-20"):
+            df_bike.iloc[i,column_index.get_loc("vacances")] = 1
+        
+        if date >= pd.to_datetime("2020-07-04") and date <= pd.to_datetime("2020-09-01"):
+            df_bike.iloc[i,column_index.get_loc("vacances")] = 1
+        
+        if date >= pd.to_datetime("2020-10-17") and date <= pd.to_datetime("2020-11-02"):
+            df_bike.iloc[i,column_index.get_loc("vacances")] = 1
+        
+        if date >= pd.to_datetime("2020-12-19") and date <= pd.to_datetime("2021-01-04"):
+            df_bike.iloc[i,column_index.get_loc("vacances")] = 1
+
+        if date >= pd.to_datetime("2021-02-13") and date <= pd.to_datetime("2021-03-01"):
+            df_bike.iloc[i,column_index.get_loc("vacances")] = 1
+
+        if date in stat_holiday :
+            df_bike.iloc[i,column_index.get_loc("feries")] = 1
+
+    return df_bike

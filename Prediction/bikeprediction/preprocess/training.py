@@ -8,7 +8,7 @@ def training(x_train):
     x_train.dropna(inplace=True)
     x_train["meteo"] = x_train["meteo"].astype(int)
     x_train["vent"] = x_train["vent"].astype(int)
-    x_train["pluie"] = x_train["pluie"].astype(float)
+    #x_train["pluie"] = x_train["pluie"].astype(float)
     train_dataset = x_train.sample(frac=0.8, random_state=0).copy()
     train_label = train_dataset.pop("Total jour")
 
