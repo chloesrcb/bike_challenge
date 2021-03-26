@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import requests, tempfile, zipfile
 import urllib, json
 import seaborn as sns
-from __future__ import print_function
+#from __future__ import print_function
 from ipywidgets import interact, interactive, fixed, interact_manual
 import ipywidgets as widgets
 import calendar
@@ -41,3 +41,5 @@ dict_counters = bv.create_dict_counter(counters, df_counters)
 
 #%%
 interact(bv.plot_counter, dict_counters = fixed(dict_counters), counter=counters, date=False, week=False, month=False, histogram=False);
+
+# %%
