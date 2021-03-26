@@ -80,18 +80,19 @@ def add_couvre_feu(df_bike):
 
 
 def add_holiday(df_bike):
-    # scholar holidays in Montpellier :
+    # add scholar holidays in Montpellier :
     # 04/04/20 to 20/04/20
     # 04/07/20 to 01/09/20
     # 17/10/20 to 02/11/20
     # 19/12/20 to 04/01/21
     # 13/02/21 to 01/03/21
 
-    # statutory holiday 2020 : 
+    # and add statutory holidays
+    #  in 2020: 
     #       12/04, 13/04, 01/05, 08/05,
     #       21/05, 31/05, 01/06, 14/07
     #       15/08, 01/11, 25/12
-    # statutory holiday 2021: 01/01
+    # in 2021: 01/01
     
     stat_holiday = ["2020-04-12", "2020-04-13", "2020-05-01", "2020-05-08", 
                     "2020-05-21", "2020-05-31", "2020-06-01", "2020-07-14", 

@@ -57,8 +57,7 @@ df_bike_raw["Heure"] = pd.to_datetime(df_bike_raw["Heure"]).dt.time
 df_bike = df_bike_raw.copy()
 df_bike = df_bike.assign(meteo = None)
 df_bike = df_bike.assign(vent = None)
-
-# df_bike = df_bike.assign(pluie = None)
+df_bike = df_bike.assign(pluie = None)
 
 #%%
 
@@ -70,7 +69,7 @@ df_bike = bp.connect_df(df_bike, df_weather, "Date", "DATE", "WINDSPEED_MAX_KMH"
 
 #%%
 
-# df_bike = bp.connect_df(df_bike, df_weather, "Date", "DATE", "PRECIP_TOTAL_DAY_MM", 6)
+df_bike = bp.connect_df(df_bike, df_weather, "Date", "DATE", "PRECIP_TOTAL_DAY_MM", 6)
 
 
 #%%
@@ -85,7 +84,7 @@ df_bike = bp.add_couvre_feu(df_bike)
 
 #%%
 # adding holiday 
-#df_bike = bp.add_holiday(df_bike)
+# df_bike = bp.add_holiday(df_bike)
 # I remove it because it doesn't improve prediction,
 # it makes it worse
 
