@@ -54,14 +54,14 @@ def histplot_counter(df):
     plt.show()
 
 
-def plot_counter(dict_counters, counter, date=False, week=False, month=False, histogram=False):
-    if date :
+def plot_counter(dict_counters, counter, option):
+    if option=="date" :
         plot_date(dict_counters[counter])
-    if week :
+    if option=="week" :
         plot_week(dict_counters[counter])
-    if month :
+    if option=="month" :
         plot_month(dict_counters[counter])
-    if histogram :
+    if option=="histogram" :
         histplot_counter(dict_counters[counter])
 
 
