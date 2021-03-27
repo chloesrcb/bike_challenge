@@ -1,0 +1,10 @@
+name: hmma238_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - matplotlib
+  - ipykernel
+  - conda-forge::fiona
+  - geopandas
+prefix: C:\Users\chloe\anaconda3\envs\hmma238_env
