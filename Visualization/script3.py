@@ -43,3 +43,4 @@ dict_counters = bv.create_dict_counter(counters, df_counters)
 interact(bv.plot_counter, dict_counters = fixed(dict_counters), counter=counters, date=False, week=False, month=False, histogram=False);
 
 # %%
+interact(bv.plot_counter, dict_counters = fixed(dict_counters), counter=counters, option=["date","week","month","histogram", "animation"], animation=False)

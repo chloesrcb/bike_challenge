@@ -24,41 +24,46 @@ plt.show()
 #%%
 
 df_counters = bv.Load_json().save_as_df()
-
+# format data for all dataframe in df_counters
+df_counters = bv.format_dfs(df_counters)
 #%%
 df_berracasa = df_counters[0]
 
-#%%
-
-df_berracasa['location'] = df_berracasa['location'].apply(shape)
-loc = gpd.GeoDataFrame(df_berracasa)
-loc["geometry"]=loc['location']
-current_loc = gpd.GeoDataFrame(loc.iloc[0].to_frame().T)
-
-ax= current_loc.plot(figsize = (15, 15), color = 'red', alpha = 0.8, zorder = 2)
-montpellier.plot(ax = ax, zorder=1, edgecolor='black', facecolor='none', color=None)
-ctx.add_basemap(ax, crs=montpellier.crs.to_string(), source=ctx.providers.Stamen.Watercolor)
-ax.set_axis_off()
-plt.tight_layout(pad=0)
-plt.show()
 # %%
+# Changing dataFrame format to GeodataFrame
+gdf_counters=[]
+for i in range(len(df_counters)):
+    df_counters[i]['location'] = df_counters[i]['location'].apply(shape)
+    gdf_counters.append(gpd.GeoDataFrame(df_counters[i]))
+    gdf_counters[i]["geometry"]=gdf_counters[i]['location']
 
-df_berracasa['location'] = df_berracasa['location'].apply(shape)
-loc = gpd.GeoDataFrame(df_berracasa)
-loc["geometry"]=loc['location']
-current_loc = gpd.GeoDataFrame(loc.iloc[0].to_frame().T)
+#%%
+# Creating Date List
+
+dates = []
+for i in range(len(df_counters)):
+    dates = list(set(dates) | set(df_counters[i].index))
+dates.sort()
 
 
-ax = montpellier.plot(figsize = (10, 10), zorder=1, edgecolor='black', facecolor='none', color=None)
-current_loc.plot(ax = ax, color = 'red', alpha = 0.8, zorder = 2, markersize=current_loc["intensity"][0])
-ctx.add_basemap(ax, crs=montpellier.crs.to_string(), source=ctx.providers.Stamen.Watercolor)
-ax.set_axis_off()
-plt.tight_layout(pad=0)
-plt.show()
+#%%
+numFile=0
+#'2021-03-28' in gdf_counters[0].index
+for date in dates:
+    print(date)
+    ax = montpellier.plot(figsize = (10, 10), zorder=1, edgecolor='black', facecolor='none', color=None)
+    for i in range(len(df_counters)):
+        if(date in gdf_counters[i].index and len(gdf_counters[i].loc[date].shape)==1):
+            current_loc = gpd.GeoDataFrame(gdf_counters[i].loc[date].to_frame().T)
+            current_loc.plot(ax = ax, color = 'red', alpha = 0.8, zorder = 2, markersize=current_loc["intensity"][date])
 
-df_berracasa['location'] = df_berracasa['location'].apply(shape)
-loc = gpd.GeoDataFrame(df_berracasa)
-loc["geometry"]=loc['location']
-current_loc = gpd.GeoDataFrame(loc.iloc[1].to_frame().T)
+    ctx.add_basemap(ax, crs=montpellier.crs.to_string(), source=ctx.providers.Stamen.Watercolor)
+    ax.set_axis_off()
+    plt.title(f"Intensities of bikes at the date {date.year}-{date.month}-{date.day}")
+    plt.tight_layout(pad=0)
+    #plt.show()
+    plt.savefig(f"bikevisualization/images/{numFile}.jpg")
+    numFile+=1
+# %%
 
 # %%

@@ -3,6 +3,8 @@ import calendar
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from ipywidgets import Image
+from IPython import display
 
 def plot_date(df):
     sns.set_theme(style="darkgrid")
@@ -54,15 +56,24 @@ def histplot_counter(df):
     plt.show()
 
 
-def plot_counter(dict_counters, counter, option):
-    if option=="date" :
+def plot_counter(dict_counters, counter, option, animation):
+    if animation :
+        animatedGif = "./bikevisualization/images/bike_gif.gif" #path relative to your notebook
+        file = open(animatedGif , "rb")
+        image = file.read()
+        progress= Image(
+            value=image,
+            format='gif')
+        display.display(progress)
+    elif option=="date" :
         plot_date(dict_counters[counter])
-    if option=="week" :
+    elif option=="week" :
         plot_week(dict_counters[counter])
-    if option=="month" :
+    elif option=="month" :
         plot_month(dict_counters[counter])
-    if option=="histogram" :
+    elif option=="histogram" :
         histplot_counter(dict_counters[counter])
+    
 
 
 
