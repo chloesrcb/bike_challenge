@@ -14,11 +14,6 @@ Data used: https://docs.google.com/spreadsheets/d/e/2PACX-1vQVtdpXMHB4g9h75a0jw8
 
 In this part, the aim is to create a visualization using data from http://data.montpellier3m.fr/dataset/comptages-velo-et-pieton-issus-des-eco-compteurs/ to visualize the bike traffic in Montpellier. 
 
-
-
-https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb
-
+Link to the widget of the visualization
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
-.. image:: https://mybinder.org/badge_logo.svg
- :target: https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb
