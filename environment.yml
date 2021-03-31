@@ -7,11 +7,8 @@ dependencies:
   - ipykernel
   - conda-forge::fiona
   - geopandas
-  - contextily
   - seaborn
   - pandas
   - numpy
   - ipywidgets
-  - branca.colormap
-  - shapely.geometry
 prefix: C:\Users\chloe\anaconda3\envs\hmma238_env

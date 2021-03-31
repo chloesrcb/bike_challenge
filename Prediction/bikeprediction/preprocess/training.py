@@ -26,9 +26,9 @@ def training(x_train):
 
     model = keras.Sequential([
       normalizer,
-      layers.Dense(9, activation='relu'),
-      layers.Dense(64, activation='relu'),
-      layers.Dense(64, activation='relu'),
+      layers.Dense(15, activation='relu'),
+      layers.Dense(128, activation='relu'),
+      layers.Dense(128, activation='relu'),
       layers.Dense(1)
     ])
 
@@ -37,7 +37,7 @@ def training(x_train):
         loss='mean_absolute_error'
     )
 
-    for i in range(2):
+    for i in range(1):
         model.fit(
             train_dataset, train_label,
             epochs=100,

@@ -111,11 +111,11 @@ fig.savefig('prediction.pdf')
 #model.predict(pd.DataFrame(test_dataset.iloc[0]).T)
 
 # %%
-april2 = bp.prediction(model, weather=0, wind=0, rain=0, weekday=4, day=2, month=4, year=2021, hour=9, minute=0, workingday=1, confinement=0,previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
+april2 = bp.prediction(model, weather=2, wind=18, rain=0, weekday=4, day=2, month=4, year=2021, hour=9, minute=0, workingday=1, confinement=0, previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
 #%%
-march27 = bp.prediction(model, weather=0, wind=0, rain=0, weekday=5, day=27, month=3, year=2021, hour=9, minute=0, workingday=0, confinement=0,previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
-# Prediction = 134 (à vérifier) avant changement archi
-# = 169 apres changement (peut etre à cause de la seed  ???)
+march27 = bp.prediction(model, weather=2, wind=24, rain=0, weekday=5, day=27, month=3, year=2021, hour=9, minute=27, workingday=0, confinement=0, previous_record=52, hour_previous_record=8, minute_previous_record=29, couvre_feu=0)
 
+# %%
+decembre22 = bp.prediction(model, weather=2, wind=8, rain=0, weekday=1, day=22, month=12, year=2020, hour=12, minute=34, workingday=1, confinement=0, previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
 
 # %%
