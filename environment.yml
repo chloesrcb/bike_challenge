@@ -12,6 +12,4 @@ dependencies:
   - pandas
   - numpy
   - ipywidgets
-  - branca
-  - shapely.geometry 
 prefix: C:\Users\chloe\anaconda3\envs\hmma238_env
