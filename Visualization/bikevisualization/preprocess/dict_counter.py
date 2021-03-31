@@ -1,6 +1,6 @@
 
 
-
+# create a dictionnary with all the counters
 def create_dict_counter(counters, df_list):
     dict_counters = {}
     i = 0

@@ -111,11 +111,9 @@ fig.savefig('prediction.pdf')
 #model.predict(pd.DataFrame(test_dataset.iloc[0]).T)
 
 # %%
-april2 = bp.prediction(model, test_dataset, 4, 2, 4, 2021, 9, 1, 0, 0)
-
+april2 = bp.prediction(model, weather=0, wind=0, rain=0, weekday=4, day=2, month=4, year=2021, hour=9, minute=0, workingday=1, confinement=0,previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
 #%%
-march27 = bp.prediction(model, test_dataset, 5, 27, 3, 2021, 9, 0, 0, 0)
-
+march27 = bp.prediction(model, weather=0, wind=0, rain=0, weekday=5, day=27, month=3, year=2021, hour=9, minute=0, workingday=0, confinement=0,previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
 # Prediction = 134 (à vérifier) avant changement archi
 # = 169 apres changement (peut etre à cause de la seed  ???)
 

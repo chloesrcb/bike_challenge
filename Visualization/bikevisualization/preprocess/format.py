@@ -1,18 +1,4 @@
-
 import pandas as pd
-
-# def days_to_str(df):
-#     days = {
-#         0: 'Monday',
-#         1: 'Tuesday',
-#         2: 'Mercredi',
-#         3: 'Jeudi',
-#         4: 'Vendredi',
-#         5: 'Samedi',
-#         6: 'Dimanche'
-#     }
-#     df["weekday"] = df["weekday"].map(days)
-#     return df
 
 # for all df in df_list, add a column date and a column weekday
 # and put date in index
