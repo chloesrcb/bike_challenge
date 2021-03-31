@@ -13,6 +13,8 @@ from ipywidgets import interact, interactive, fixed, interact_manual
 import ipywidgets as widgets
 import calendar
 
+
+
 #%%
 
 # load data in a list of dataframe
