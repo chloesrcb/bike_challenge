@@ -17,6 +17,9 @@ Data used are from https://docs.google.com/spreadsheets/d/e/2PACX-1vQVtdpXMHB4g9
 In this part, the aim is to create a visualization using data from http://data.montpellier3m.fr/dataset/comptages-velo-et-pieton-issus-des-eco-compteurs/ to visualize the bike traffic in Montpellier. 
 
 The visualization is a widget showing the bike traffic evolution in Montpellier between December 2020 and March 2021.  
+
+## Some charts on each counter
+
 We can see some charts on each counters : 
 
     - the daily intensity of bikes;
@@ -24,11 +27,15 @@ We can see some charts on each counters :
     - the intensity of bikes by month;
     - a histogram of the amount of each possible intensity by month.  
 
-[<img src="Visualization/bikevisualization/images/vis.png" align="left" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
-Then we can see a gif animation showing intensities of bikes for all counters in Montpellier at the same time.
+[<img src="Visualization/bikevisualization/images/vis.png" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
+
+
+
+## Gif animation   
+Then we can see a gif animation showing intensities of bikes for all counters in Montpellier at the same time.  
 
 [<img src="Visualization/bikevisualization/images/bike_gif.gif" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
-Link to the widget of the visualization
+Link to the widget : 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
