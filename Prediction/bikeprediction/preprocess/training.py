@@ -5,6 +5,15 @@ from tensorflow.keras import layers
 from tensorflow.keras.layers.experimental import preprocessing
 
 def training(x_train):
+    """
+        Create a prevision model by training it
+        Entry : x_train = dataframe to train the model
+        Return : y_pred = 
+                 x =
+                 test_label =
+                 model =
+                 test_dataset =
+    """
     x_train.dropna(inplace=True)
     x_train["meteo"] = x_train["meteo"].astype(int)
     x_train["vent"] = x_train["vent"].astype(int)
@@ -14,7 +23,8 @@ def training(x_train):
 
     test_dataset = x_train.drop(train_dataset.index)
     test_label = test_dataset.pop("Total jour")
-    #Normalize data
+    
+    # Normalize data to have the same scale
     normalizer = preprocessing.Normalization()
     normalizer.adapt(np.array(train_dataset))
     print(normalizer.mean.numpy())

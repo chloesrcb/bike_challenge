@@ -6,6 +6,9 @@ from ipywidgets import Image
 from IPython import display
 
 def plot_date(df):
+    """
+        plot a chart with daily intensity of bikes 
+    """
     sns.set_theme(style="darkgrid")
     sns.relplot(x="date", y="intensity", kind="line", ci="sd", data=df)
     plt.xlabel('Date')
@@ -15,6 +18,10 @@ def plot_date(df):
     plt.show()
 
 def plot_week(df):
+    """
+        plot a chart with intensity of bikes according to the day of week
+        for each counter
+    """
     counter_week = df.groupby("weekday")["intensity"]
     days = ['Monday', 'Tuesday', 'Wednesday',
         'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -29,6 +36,9 @@ def plot_week(df):
 
 
 def plot_month(df):
+    """
+        plot a chart with monthly intensity of bikes for each counter
+    """
     months = ['January', 'February', 'March', 'April',
               'May', 'June', 'July', 'August', 'September',
               'October', 'November', 'December']
@@ -46,6 +56,9 @@ def plot_month(df):
 
 
 def histplot_counter(df):
+    """
+        plot an histogram with monthly intensity of bikes for each counter
+    """
     months = ['January', 'February', 'March', 'April',
               'May', 'June', 'July', 'August', 'September',
               'October', 'November', 'December']
@@ -61,6 +74,14 @@ def histplot_counter(df):
 
 
 def plot_counter(dict_counters, counter, option, animation):
+    """
+        Plot the widget according to the option and animation checkbox.
+        The animation provides a gif animation in priority when animation=True.
+        Entry : dict_counter = dictionnary with all the dataframes and their names
+                counter = list of counters names
+                option = list of option (date, week, month, histogram)
+                animation = boolean to show gif animation or not
+    """
     if animation :
         animatedGif = "./bikevisualization/images/bike_gif.gif" #path relative to your notebook
         file = open(animatedGif , "rb")

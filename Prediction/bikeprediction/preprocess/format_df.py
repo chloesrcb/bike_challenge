@@ -1,12 +1,15 @@
 import pandas as pd
 
-# modify df by changing str values in elt_col_sort from column
-# col in int values in increasing order from 0.
-# entry  : df = weather dataframe
-#          col = column we want to change
-#          elt_col_sort = list of col elements which are 
-#                   sorted according to some preferences
+
 def format_to_int(df, col, elt_col_sort):
+    """
+        modify df by changing str values in elt_col_sort from column
+        col in int values in increasing order from 0.
+        entry:  df = weather dataframe
+                col = column we want to change
+                elt_col_sort = list of col elements which are 
+                    sorted according to some preferences
+    """
     dict_temp = {}
     i = 0
     for elt in elt_col_sort: 
@@ -16,10 +19,14 @@ def format_to_int(df, col, elt_col_sort):
     return df
 
 
-# format df_bike
-# by removing useless column and NaN values
-# by adding cropped date with day, mont, year, hour, minute
+
 def format_bike(df_bike):
+    """
+        format df_bike
+        by removing useless column and NaN values
+        by adding cropped date with day, mont, year, hour, minute
+
+    """
     df_bike["Date"] = pd.to_datetime(df_bike["Date"].astype(str) + ' ' + df_bike["Heure"].astype(str),format="%Y-%m-%d %H:%M:%S")
     df_bike.drop(columns=['Heure'], inplace=True)
     # get value in new columns 
@@ -38,15 +45,18 @@ def format_bike(df_bike):
     df_bike["travail"] = df_bike["travail"].map(working_day)
     return df_bike
 
-# format df_weather
-# by changing "OPINION" column with int values from 0 to 4 like this :
-#           "météo très défavorable" -> 0
-#           "météo défavorable" -> 1
-#           "météo correcte" -> 2
-#           "météo favorable" -> 3
-#           "météo idéale" -> 4
-# by changing the date in datetime type
+
 def format_weather(df_weather) :
+    """
+        format df_weather
+        by changing "OPINION" column with int values from 0 to 4 like this :
+            "météo très défavorable" -> 0
+            "météo défavorable" -> 1
+            "météo correcte" -> 2
+            "météo favorable" -> 3
+            "météo idéale" -> 4
+        by changing the date in datetime type
+    """
     opinion_str = ["météo très défavorable", "météo défavorable", "météo correcte",
             "météo favorable", "météo idéale"]
     format_to_int(df_weather, "OPINION", opinion_str)

@@ -1,9 +1,14 @@
 import pandas as pd
 
-# for all df in df_list, add a column date and a column weekday
-# and put date in index
-
 def format_dfs(df_list):
+    """
+        For all df in df_list, add a column date and a column weekday
+        and put date in index
+        The column date corresponding to the first date in the first part of "dateObserved" in dfs
+        The column weekday corresponding to day of week : 0 for Monday to 6 for Sunday
+        Entry : df_list = list of dataframes
+        Return : df_list modified with new columns "date" and "weekday" and "dateObserved" removed
+    """
     for i in range(10) :
         df_list[i] = df_list[i].assign(date=0)
         df_list[i] = df_list[i].assign(weekday=0)

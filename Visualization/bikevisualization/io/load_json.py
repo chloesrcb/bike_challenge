@@ -3,6 +3,9 @@ import pandas as pd
 from bikevisualization.io import url_counters, counters
 
 def format_json(web_content):
+  """
+    format the bad json archive in a good format
+  """
   str_content = str(web_content)
   str_content = str_content.replace("\\n","")
   str_content = "["+str_content[2:-1]+"]"
@@ -13,6 +16,9 @@ def format_json(web_content):
   return str_content
 
 class Load_json:
+  """
+    Load json files from an url in different files with counter name.
+  """
   def __init__(self, list_url=url_counters, list_name=counters):
     for i in range(len(list_url)):
       url = list_url[i]
