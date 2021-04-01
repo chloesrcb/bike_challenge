@@ -1,4 +1,4 @@
-name: projet
+name: test_env
 channels:
   - defaults
   - conda-forge
@@ -13,4 +13,4 @@ dependencies:
   - numpy
   - ipywidgets
   - voila
-prefix: C:\Users\chloe\anaconda3\envs\projet
+prefix: C:\Users\chloe\anaconda3\envs\test_env
