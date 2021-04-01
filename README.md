@@ -16,9 +16,8 @@ In this part, the aim is to create a visualization using data from http://data.m
 
 Link to the widget of the visualization
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
-<p align="center">
-  [<img src="Visualization/bikevisualization/images/vis.png" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
-</p>
+
+ [<img src="Visualization/bikevisualization/images/vis.png" align="left" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
 
 [<img src="Visualization/bikevisualization/images/bike_gif.gif" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
