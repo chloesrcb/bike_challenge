@@ -19,4 +19,4 @@ Link to the widget of the visualization
 
 [<img src="Visualization/bikevisualization/images/vis.png" height="200">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
-[<img src="Visualization/bikevisualization/images/bike_gif.gif" height="200">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
+[<img src="Visualization/bikevisualization/images/bike_gif.gif" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
