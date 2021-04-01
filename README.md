@@ -16,7 +16,7 @@ Data used are from https://docs.google.com/spreadsheets/d/e/2PACX-1vQVtdpXMHB4g9
 
 In this part, the aim is to create a visualization using data from http://data.montpellier3m.fr/dataset/comptages-velo-et-pieton-issus-des-eco-compteurs/ to visualize the bike traffic in Montpellier. 
 
-The visualization is a widget showing the bike traffic evolution in Montpellier between December 2020 and March 2021.  
+The visualization is a widget showing the bike traffic evolution in Montpellier between December 2020 and the present day.  
 
 Link to the widget : 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://hub.gke2.mybinder.org/user/chloesrcb-bike_challenge-oz3vs4wy/voila/render/Visualization/widget.ipynb)
