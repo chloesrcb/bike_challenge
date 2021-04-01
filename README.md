@@ -18,6 +18,9 @@ In this part, the aim is to create a visualization using data from http://data.m
 
 The visualization is a widget showing the bike traffic evolution in Montpellier between December 2020 and March 2021.  
 
+Link to the widget : 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
+
 ## Some charts on each counter
 
 We can see some charts on each counters : 
@@ -34,5 +37,4 @@ Then we can see a gif animation showing intensities of bikes for all counters in
 
 [<img src="Visualization/bikevisualization/images/bike_gif.gif" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
-Link to the widget : 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
+
