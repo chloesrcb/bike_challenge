@@ -26,6 +26,8 @@ We can see some charts on each counters :
 
 [<img src="Visualization/bikevisualization/images/vis.png" align="left" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
 
+\newline
+
 Then we can see a gif animation showing intensities of bikes for all counters in Montpellier at the same time.
 
 [<img src="Visualization/bikevisualization/images/bike_gif.gif" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
