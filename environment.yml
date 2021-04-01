@@ -1,4 +1,4 @@
-name: hmma238_env
+name: projet
 channels:
   - defaults
   - conda-forge
@@ -12,4 +12,5 @@ dependencies:
   - pandas
   - numpy
   - ipywidgets
-prefix: C:\Users\chloe\anaconda3\envs\hmma238_env
+  - voila
+prefix: C:\Users\chloe\anaconda3\envs\projet

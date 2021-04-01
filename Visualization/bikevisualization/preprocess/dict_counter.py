@@ -1,7 +1,9 @@
 
 
-# create a dictionnary with all the counters
 def create_dict_counter(counters, df_list):
+    """
+        create a dictionnary with all the counters and there dataframe
+    """
     dict_counters = {}
     i = 0
     for elt in counters:
