@@ -28,10 +28,6 @@ We can see some charts on each counters :
     - a histogram of the amount of each possible intensity by month.  
 
 
-[<img src="Visualization/bikevisualization/images/vis.png" height="500">](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
-
-
-
 ## Gif animation   
 Then we can see a gif animation showing intensities of bikes for all counters in Montpellier at the same time.  
 
