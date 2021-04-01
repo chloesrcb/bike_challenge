@@ -29,6 +29,8 @@ df_weather20 = pd.read_csv("./bikeprediction/data/data_weather20.csv")
 # Weather data in Montpellier in 2021 (only january and february)
 df_weather21 = pd.read_csv("./bikeprediction/data/data_weather21.csv")
 
+# March values aren't appload yet on "Historique Météo" so I enter data manually from another website.
+
 # Concatenate the two df in one df_weather 
 df_weather = pd.concat([df_weather20, df_weather21], ignore_index=True)
 
@@ -94,15 +96,20 @@ df_bike.drop(columns=['Date'], inplace=True)
 # TENSORFLOW PART :
 # %%
 
+# dataframe that will be processed and split for the training and the test.
 x_train = df_bike.copy()
 
 # x_train = x_train[x_train.hour_previous_record == 0]
 # x_train = x_train[x_train.annee == 2021]
 
 #%%
-y_pred, x, test_label, model, test_dataset = bp.training(x_train)
+y_pred, test_label, model, test_dataset = bp.training(x_train)
 
 #%%
+x = tf.linspace(0, test_label.shape[0]-1, test_label.shape[0])
+
+#%%
+# plot prediction
 fig = plt.figure(figsize=(8,4))
 bp.plot_prediction(x,y_pred, test_label)
 fig.savefig('prediction.pdf')
@@ -110,12 +117,26 @@ fig.savefig('prediction.pdf')
 # %%
 #model.predict(pd.DataFrame(test_dataset.iloc[0]).T)
 
-# %%
-april2 = bp.prediction(model, weather=2, wind=18, rain=0, weekday=4, day=2, month=4, year=2021, hour=9, minute=0, workingday=1, confinement=0, previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
-#%%
-march27 = bp.prediction(model, weather=2, wind=24, rain=0, weekday=5, day=27, month=3, year=2021, hour=9, minute=27, workingday=0, confinement=0, previous_record=52, hour_previous_record=8, minute_previous_record=29, couvre_feu=0)
+
+
+# Testing model prediction :
 
 # %%
-decembre22 = bp.prediction(model, weather=2, wind=8, rain=0, weekday=1, day=22, month=12, year=2020, hour=12, minute=34, workingday=1, confinement=0, previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
+decembre22 = bp.prediction(model, weather=2, wind=8, rain=0, weekday=1, day=22, month=12, year=2020, hour=12, minute=34, workingday=1, confinement=0, previous_record=231, hour_previous_record=11, minute_previous_record=51, couvre_feu=0)
+# find 263 and the real record was 268 at 12:34
+
+#%%
+march27 = bp.prediction(model, weather=2, wind=24, rain=0, weekday=5, day=27, month=3, year=2021, hour=9, minute=27, workingday=0, confinement=0, previous_record=52, hour_previous_record=8, minute_previous_record=29, couvre_feu=0)
+# find 127 and the real record was 111 at 9:27
+
+#%%
+april1 = bp.prediction(model, weather=2, wind=6, rain=0, weekday=3, day=1, month=4, year=2021, hour=9, minute=37, workingday=1, confinement=0, previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
+# find 426 and the real record was 437 at 9:37
+
+# Prediction on 2nd April at 9:00 :
+# %%
+april2 = bp.prediction(model, weather=2, wind=19, rain=0, weekday=4, day=2, month=4, year=2021, hour=9, minute=0, workingday=1, confinement=0, previous_record=0, hour_previous_record=0, minute_previous_record=0, couvre_feu=0)
+print(april2)
+# find 335
 
 # %%

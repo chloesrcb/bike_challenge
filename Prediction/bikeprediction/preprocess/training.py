@@ -8,11 +8,10 @@ def training(x_train):
     """
         Create a prevision model by training it
         Entry : x_train = dataframe to train the model
-        Return : y_pred = 
-                 x =
-                 test_label =
-                 model =
-                 test_dataset =
+        Return : y_pred = list of prediction on test database
+                 test_label = list of expected values of the test database 
+                 model = trained model
+                 test_dataset = test dataframe
     """
     x_train.dropna(inplace=True)
     x_train["meteo"] = x_train["meteo"].astype(int)
@@ -56,8 +55,7 @@ def training(x_train):
         )
 
     y_pred = model.predict(test_dataset)
-    x = tf.linspace(0, test_label.shape[0]-1, test_label.shape[0])
-    return (y_pred, x, test_label, model, test_dataset)
+    return (y_pred, test_label, model, test_dataset)
 
    
 
