@@ -19,7 +19,7 @@ In this part, the aim is to create a visualization using data from http://data.m
 The visualization is a widget showing the bike traffic evolution in Montpellier between December 2020 and the present day.  
 
 Link to the widget : 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://hub.gke2.mybinder.org/user/chloesrcb-bike_challenge-oz3vs4wy/voila/render/Visualization/widget.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://hub.gke2.mybinder.org/user/chloesrcb-bike_challenge-lvdwfozp/voila/render/Visualization/widget.ipynb)
 
 Link to the notebook file :
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/chloesrcb/bike_challenge/main?filepath=Visualization%2Fwidget.ipynb)
