@@ -49,7 +49,7 @@ def plot_month(df):
     plt.title("Monthly and daily intensity of bikes")
     plt.xlabel('Date')
     plt.ylabel('Intensity of bikes')
-    plt.legend(labels=months, loc='lower left', bbox_to_anchor=(1, 0.1))
+    plt.legend(loc='lower left', bbox_to_anchor=(1, 0.1))
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.show()
