@@ -13,6 +13,8 @@ def format_json(web_content):
   str_content = str_content.replace("}  {","},{")
   str_content = str_content.replace("}   {","},{")
   str_content = str_content.replace("}{","},{")
+  str_content = str_content.replace("}    {","},{")
+  str_content = str_content.replace("}     {","},{")
   return str_content
 
 class Load_json:
