@@ -27,8 +27,8 @@ def add_record(df_bike):
 def add_confinement(df_bike):
     """
         add "confinement" data (in France)
-        from 03/17/2020 at 12 h to 05/11/2020 (not include) 
-        from 10/30/2020 to 12/15/2020 (not include)
+        from 03/17/2020 at 12 h to 05/11/2020 (not included) 
+        from 10/30/2020 to 12/15/2020 (not included)
     """
     df_bike = df_bike.assign(confinement=0)
     column_index = Index(df_bike.columns)
